@@ -1,0 +1,76 @@
+<html>
+
+<head>
+      <link rel="stylesheet" type="text/css" href="style340.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title> CS340: Songs Database App </title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <title>Artist</title>
+  </head>
+<body>
+   <header class="header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                <div class="container">
+            <div class ="navbar-header text-info">Weinert-Passaro Productions
+            </div>
+            <div class="collapse navbar-collapse" id="mainNav">
+              <div class="navbar-nav flex-row ml-md-auto d-md-flex">
+                <a class="nav-item nav-link p-2 active" href="index.html">HOME<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link p-2 active" href="\songs">Songs<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link p-2 active" href="\artist">Artist<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link p-2 active" href="\genre">Genre<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link p-2 active" href="\label">Record Label<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link p-2 active" href="\delete_relation">Relationships<span class="sr-only">(current)</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+<h3>Add new Artist:</h3>
+<form id="addArtist" action="/artist" method="post">
+    Artist First Name: <input type="text" name="fname" required minlength="1"><br>
+    Artist Last Name: <input type="text" name="lname" placeholder="Blank if Artist has 1 name"><br>
+    Record Label: <select name="label"> 
+		{{#each label}}
+        <option value="{{labelId}}">{{labelName}}</option>
+        {{/each}}
+	</select><br>
+    <input type="submit" value="Submit">
+ </form>
+<br/>
+
+<form id='filter_artist' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Filter Artists by Genre </label>
+    <select id='artistFilter' name="artistFilter"> 
+        {{#each genre}}
+        <option value="{{genreId}}">{{genreName}}</option>
+        {{/each}}
+    </select><br>
+    <input type="button" value="Filter" onclick="filterArtistByGenre()">
+</form>
+
+
+
+<h3>Current Artists:</h3>
+<table>
+    <thead> 
+        <th>Artist Name</th> 
+        <th>Record Label</th> 
+    </thead> 
+    <tbody>
+        {{#each artist}} 
+        <tr> 
+            <td>{{artistFirstName}} {{artistLastName}}</td> 
+            <td>{{labelName}}</td> 
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table><br>
+</table> 
+</html>

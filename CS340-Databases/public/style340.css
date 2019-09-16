@@ -1,0 +1,47 @@
+
+*{margin: 1px;padding:1px;}
+
+td, th {
+
+	padding-right: 10px;
+}
+
+
+
+.header{height:100vh;}
+.navbar-style
+{box-shadow: 0 5px 10px #efefef}
+.logo 
+{height:40px;
+padding:2px 10px;}
+.pics {
+    position: center;
+    float: left;
+    width:  200px;
+    height: 200px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
+}
+ .pc{
+    display: inline-block;
+    width: 350px;
+    height:250px;
+    zoom: 1;         
+  }
+  .url{text-align :center;}
+  .picss{
+      width: 5000px;
+  }
+  .body1{
+    background-image:url('p1.jpg');
+    background-attachment:fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.forms{position: center}
+
+fieldset {
+	border: 2px solid black;
+	border-radius: 10px;
+}

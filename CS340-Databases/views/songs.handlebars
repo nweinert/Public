@@ -1,0 +1,106 @@
+<html>
+
+<head>
+      <link rel="stylesheet" type="text/css" href="style340.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title> CS340: Songs Database App </title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <title>Song</title>
+  </head>
+<body>
+   <header class="header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                <div class="container">
+            <div class ="navbar-header text-info">Weinert-Passaro Productions
+            </div>
+            <div class="collapse navbar-collapse" id="mainNav">
+              <div class="navbar-nav flex-row ml-md-auto d-md-flex">
+                <a class="nav-item nav-link p-2 active" href="index.html">HOME<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link p-2 active" href="\songs">Songs<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link p-2 active" href="\artist">Artist<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link p-2 active" href="\genre">Genre<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link p-2 active" href="\label">Record Label<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link p-2 active" href="\delete_relation">Relationships<span class="sr-only">(current)</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+<h3>Add new song:</h3>
+<form id="addSong" action="/songs" method="post">
+    Song name: <input type="text" name="name" required minlength="1"><br>
+    Song Length: <input type="number" name="lengthMin" placeholder="Minutes" min="0" max = "59"><input type="number" name="lengthSec" placeholder="Seconds" min=")" max="59"><br>
+    Release Year: <input type="number" name="releaseYear" min="0" max="2019"><br>
+    Record Label: <select name="label"> 
+		{{#each label}}
+        <option value="{{labelId}}">{{labelName}}</option>
+        {{/each}}
+         <option value="NULL"> No Record Label </option>
+
+	</select><br>
+    <div id="artistContainer"></div>
+    <div id="genreContainer"></div>
+    Genre: <select name="genre"> 
+        {{#each genre}}
+        <option value="{{genreId}}">{{genreName}}</option>
+        {{/each}}
+    </select><br>
+     Artist: <select name="artist"> 
+        {{#each artist}}
+        <option value="{{artistId}}">{{artistFirstName}} {{artistLastName}}</option>
+        {{/each}}
+    </select><br>
+    <input type="submit" value="Submit">
+ </form>
+<br/>
+
+<form id='filter_songs' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Filter by Genre </label>
+    <select id='genreFilter' name="genre"> 
+        {{#each genre}}
+        <option value="{{genreId}}">{{genreName}}</option>
+        {{/each}}
+    </select><br>
+    <input type="button" value="Filter" onclick="filterSongsByGenre()">
+</form>
+
+<form id='filter_songs2' action='' method=''>
+<!--- this form does not submit directly, the button handles all the interaction with backend -->
+    <label> Filter by Artist </label>
+    <select id='artistFilter' name="artist"> 
+        {{#each artist}}
+        <option value="{{artistId}}">{{artistFirstName}} {{artistLastName}}</option>
+        {{/each}}
+    </select><br>
+    <input type="button" value="Filter" onclick="filterSongsByArtist()">
+</form>
+
+
+<h3>Current songs:</h3>
+<table>
+    <thead> 
+        <th>Song Name</th> 
+        <th>Song Length</th> 
+        <th>Release Year</th>  
+	<th>Record Label</th>
+    </thead> 
+    <tbody>
+        {{#each songs}} 
+        <tr> 
+            <td>{{name}}</td> 
+            <td>{{length}}</td> 
+            <td>{{releaseYear}}</td> 
+	    <td>{{recordLabel}}</td>
+            <td><button onclick="deleteSong({{id}})">Delete</button></td>
+            <td><a href="/songs/{{id}}">Update</a></td>
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table><br>
+</table> 
+</html>

@@ -1,0 +1,28 @@
+<html>
+<h1>Update {{song.name}}:</h1>
+<form id="updateSong" action="/songs" method="">
+    Song name: <input type="text" name="name" value="{{song.name}}"><br>
+    Song Length: <input type="number" name="lengthMin" value="{{time.min}}" min="0" max = "59"><input type="number" name="lengthSec" value="{{time.sec}}" min=")" max="59"><br>
+    Release Year: <input type="year" name="releaseYear" value="{{song.releaseYear}}"><br>
+   Record Label: <select name="label" id="Slabel"> 
+	{{#each label}}
+        <option value="{{labelId}}">{{labelName}}</option>
+        {{/each}}
+        <option value="NULL"> No Record Label </option>
+
+	</select><br>
+    <div id="artistContainer"></div>
+    <div id="genreContainer"></div>
+      Add Genre to song relationship: <select name="genre" id="Sgenre"> 
+        {{#each genre}}
+        <option value="{{genreId}}">{{genreName}}</option>
+        {{/each}}
+    </select><br>
+     Add artist to song relationship: <select name="artist" id="Sartist">
+        {{#each artist}}
+        <option value="{{artistId}}">{{artistFirstName}} {{artistLastName}}</option>
+        {{/each}}
+    </select><br>
+<button onclick="updateSong({{song.id}})">Update</button>
+<script defer>fillLabel({{song.labelId}}); fillGenre({{song.genreId}}); fillArtist({{song.artistId}});</script>
+</html>

@@ -1,0 +1,73 @@
+<html>
+
+<head>
+      <link rel="stylesheet" type="text/css" href="style340.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title> CS340: Songs Database App </title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <title>Song</title>
+  </head>
+<body>
+   <header class="header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                <div class="container">
+            <div class ="navbar-header text-info">Weinert-Passaro Productions
+            </div>
+            <div class="collapse navbar-collapse" id="mainNav">
+              <div class="navbar-nav flex-row ml-md-auto d-md-flex">
+                <a class="nav-item nav-link p-2 active" href="index.html">HOME<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link p-2 active" href="\songs">Songs<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link p-2 active" href="\artist">Artist<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link p-2 active" href="\genre">Genre<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link p-2 active" href="\label">Record Label<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link p-2 active" href="\delete_relation">Delete a Relationship<span class="sr-only">(current)</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+<h3>Current relationships:</h3>
+<table>
+    <thead> 
+        <th>Song Name</th> 
+        <th>Song Artist Name</th> 
+    </thead> 
+    <tbody>
+        {{#each songs}} 
+        <tr> 
+            <td>{{name}}</td> 
+            <td>{{artistName}} {{artistLastName}}</td> 
+            <td><button onclick="deleteRelation({{id}}, {{artistId}})">Delete</button></td>
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table><br>
+</table> 
+ 
+<h3>Current Song Artist relationships:</h3>
+<table>
+    <thead> 
+        <th>Song Name</th> 
+        <th>Song Length</th> 
+        <th>Release Year</th>  
+	<th>Record Label</th>
+    </thead> 
+    <tbody>
+        {{#each songs}} 
+        <tr> 
+            <td>{{name}}</td> 
+            <td>{{artist}}</td> 
+            <td><button onclick="deletesong({{id}}, {{artistId}})">Delete</button></td>
+            <td><a href="/songs/{{id}}">Update</a></td>
+        </tr> 
+        {{/each}} 
+    </tbody> 
+</table><br>
+</table> 
+</body>
+</html>
